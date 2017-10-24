@@ -1,0 +1,3 @@
+excludeDirectories = "{$excludeDirectories,node_modules}"
+includeDirectories = "{$includeDirectories}"
+includeFiles = "{$includeFiles,.gitignore,.eslintrc}"
