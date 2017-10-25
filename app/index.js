@@ -4,6 +4,7 @@ import favicon from "serve-favicon"
 import logger from "morgan"
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
+import expressReactViews from "express-react-views"
 import ws from "express-ws"
 import { normalizePort } from "./utils"
 
@@ -12,15 +13,16 @@ const app = express()
 ws(app)
 
 app.get("/", (req, res)=>{
-  res.send("<p>ok NOT kewl</p>")
+  res.render("index")
 })
 
 // app = applyConfig(app)
 // app = applyRoutes(app)
 
 /* Set Views Engine */
-app.set("views", path.join(__dirname, "../views"))
-app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
+app.set("view engine", "jsx")
+app.engine("jsx", expressReactViews.createEngine())
 
 /* Config */
 // app.use(favicon(path.join(__dirname, "../public", "favicon.ico")))
